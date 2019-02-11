@@ -4,33 +4,34 @@
 
 <h1>The Python Autocomplete Application</h1>
 <hr>
-<p>We all see the keyboards in our mobile phones complete our words for us. Well this is the same application, but more of an optimized one.</p>
-
+<p>We all see the keyboards in our mobile phones and websites complete our words for us. Well this is the same application, but more of an optimized one, the one which you won't find on internet built from scratch ;)</p>
+<a href="http://johnjohnston.info/106/wp-content/uploads/2013/12/google_autocomplete.gif"> <img src="http://johnjohnston.info/106/wp-content/uploads/2013/12/google_autocomplete.gif"></a>
 <h3>Prerequisites & Software Required</h3>
 <p>
 <ul style="list-style-type:disc">
     <li>Python</li>
+    <li>Knowledge of Tries and dictionaries</li>
     <li>Visual Studio Code</li>
 </ul>
 </p>
 
 <h3>Dataset</h3>
 
-<p>The dataset is nothing but a txt file containing all the words of the dictionary.</p>
+<p>The dataset is nothing but a txt file containing all the words of the dictionary. It is stored in the file name words_alpha.txt. You can mess around with it as much as you'd like. You can also change the source to small words.txt and mess around with it(It has no other purpose than that :P). </p>
 
 <h3>Logic</h3>
 <p>
 The main idea behind the application is the usage of tries and their optimization. 
-First of all we use a trie to create our dictionary. All the words in the dictionary are created node by node. 
+First of all we use a trie to create our dictionary (I've written English dictionary and python dictionaries separately so that you don't get confused while reading them). All the words in the English dictionary are created node by node. 
 So let's take the word 'Teaching' for example. When we create this word, it is stored node by node as in, T is a node connected to e which is further connected to a and so on.
-They are connected in the form of dictionaries, i.e. every node has a dictionary. So, the node T will have a dictionary where there will be a key 'e' pointing to the address of the node of 'e'.
-At the end of the word "Teaching", we will append a '/' so that we can denote that this is the end of the word. This will have a significant impact when the optimization takes place.
+They are connected in the form of python dictionaries, i.e. every node has a python dictionary. So, the node T will have a python dictionary where there will be a key 'e' pointing to the address of the node of 'e'.
+At the end of the word "Teaching", we will append a '/' so that we can denote that this is the end of the word. This will have a significant impact when the optimization takes place. We will discuss it later.
 </p>
 <h4> For example:</h4>
 <a href="https://ibb.co/Jk7xTtS"><img src="https://i.ibb.co/Jk7xTtS/representation.png" alt="representation" border="0"></a>
 <p>In this image the root node has a dictionary with two keys,i.e 't' and 's', what we can observe here is that the nodes themselves have no values, it is the key in the dictionary that tells us what the value of the node is.
 To optimize this trie, what we can do is combine the nodes i, n and t to make it a single node 'int', similarly i, n ,g can be combined to 'ing' to conserve two nodes.
-For another example, you can refer to this <a href="https://ibb.co/jrp5dxb">exapmle.</a>
+For another example, you can refer to this <a href="https://ibb.co/jrp5dxb">example.</a>
 </p>
 <h3> Optimization</h3>
 <p>What really happens during optimization? What we are essentially trying to do is find the node which has only one child. So let's say the dictionary we have, only has two words, "teach" and "teachnig".
